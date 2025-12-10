@@ -62,22 +62,55 @@
       }
 
       /* 2. Styles pour le défilement infini des drapeaux */
-      @keyframes scroll {
+      @keyframes scrollFlags {
         0% {
           transform: translateX(0);
         }
         100% {
-          transform: translateX(
-            calc(-100% - 8px)
-          ); /* Défile 1 set + gap de 8px */
+          transform: translateX(calc(-50%));
         }
       }
-      .flags-track {
-        display: flex;
-        gap: 8px; /* gap-2 */
-        animation: scroll 30s linear infinite;
-        width: max-content;
+      
+      .flags-container {
+        position: relative;
+        overflow: hidden;
+        flex: 1;
       }
+      
+      .flags-container::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 60px;
+        background: linear-gradient(to right, #15171E, transparent);
+        z-index: 20;
+        pointer-events: none;
+      }
+      
+      .flags-container::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 60px;
+        background: linear-gradient(to left, #15171E, transparent);
+        z-index: 20;
+        pointer-events: none;
+      }
+      
+      .flags-track {
+        display: grid;
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        gap: 8px;
+        animation: scrollFlags 35s linear infinite;
+        width: 200%;
+        grid-auto-rows: 1fr;
+        height: fit-content;
+      }
+      
       .flags-track-paused:hover .flags-track {
         animation-play-state: paused;
       }
@@ -325,9 +358,9 @@
           <div
             class="bg-[#15171E] border border-white/5 rounded-2xl p-6 relative overflow-hidden group hover:border-white/10 transition-colors min-h-[300px] flex flex-col justify-between spotlight-card"
           >
-            <div class="relative z-10 mb-6 flex items-start gap-4">
+            <div class="relative z-10 mb-6 flex flex-col gap-4 h-full">
               <div
-                class="bg-[#1C1F26] border border-white/5 rounded-xl p-4 shadow-lg shrink-0"
+                class="absolute top-6 left-6 bg-[#1C1F26] border border-white/5 rounded-xl p-4 shadow-lg z-30"
               >
                 <div
                   class="w-8 h-8 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-500 mb-2"
@@ -338,57 +371,43 @@
                 <p class="text-sm font-medium text-white"># 24 Global</p>
               </div>
 
-              <div class="flex-1 overflow-hidden flags-track-paused">
+              <div class="flex-1 overflow-hidden flags-track-paused flags-container mt-12">
                 <div class="flags-track" id="flag-scroll-track">
-                  <div
-                    class="grid grid-cols-4 gap-2 shrink-0"
-                    id="original-flags"
-                  >
-                    <div
-                      class="aspect-square rounded-full bg-blue-900/30 flex items-center justify-center text-lg border border-white/5"
-                    >
-                      <img
-                        src="https://www.countryflags.com/wp-content/uploads/italy-flag-png-large-300x200.png"
-                        class="w-24 h-24 rounded-full border border-slate-700 object-cover"
-                        alt=""
-                      />
-                    </div>
-                    <div
-                      class="aspect-square rounded-full bg-red-900/30 flex items-center justify-center text-lg border border-white/5"
-                    >
-                      🇺🇸
-                    </div>
-                    <div
-                      class="aspect-square rounded-full bg-green-900/30 flex items-center justify-center text-lg border border-white/5"
-                    >
-                      🇮🇹
-                    </div>
-                    <div
-                      class="aspect-square rounded-full bg-yellow-900/30 flex items-center justify-center text-lg border border-white/5"
-                    >
-                      🇧🇷
-                    </div>
-                    <div
-                      class="aspect-square rounded-full bg-indigo-900/30 flex items-center justify-center text-lg border border-white/5"
-                    >
-                      🇦🇲
-                    </div>
-                    <div
-                      class="aspect-square rounded-full bg-slate-800 flex items-center justify-center text-lg border border-white/5"
-                    >
-                      🇨🇦
-                    </div>
-                    <div
-                      class="aspect-square rounded-full bg-orange-900/30 flex items-center justify-center text-lg border border-white/5"
-                    >
-                      🇪🇸
-                    </div>
-                    <div
-                      class="aspect-square rounded-full bg-teal-900/30 flex items-center justify-center text-lg border border-white/5"
-                    >
-                      🇦🇷
-                    </div>
+                  <!-- Row 1 Flags -->
+                  <div class="aspect-square rounded-full bg-blue-900/30 flex items-center justify-center text-lg border border-white/5">
+                    <img src="https://www.countryflags.com/wp-content/uploads/italy-flag-png-large-300x200.png" class="w-full h-full rounded-full border border-slate-700 object-cover" alt="IT" />
                   </div>
+                  <div class="aspect-square rounded-full bg-red-900/30 flex items-center justify-center text-lg border border-white/5">🇺🇸</div>
+                  <div class="aspect-square rounded-full bg-green-900/30 flex items-center justify-center text-lg border border-white/5">🇮🇹</div>
+                  <div class="aspect-square rounded-full bg-yellow-900/30 flex items-center justify-center text-lg border border-white/5">🇧🇷</div>
+                  <div class="aspect-square rounded-full bg-indigo-900/30 flex items-center justify-center text-lg border border-white/5">🇦🇲</div>
+                  <div class="aspect-square rounded-full bg-slate-800 flex items-center justify-center text-lg border border-white/5">🇨🇦</div>
+                  
+                  <!-- Row 2 Flags -->
+                  <div class="aspect-square rounded-full bg-orange-900/30 flex items-center justify-center text-lg border border-white/5">🇪🇸</div>
+                  <div class="aspect-square rounded-full bg-teal-900/30 flex items-center justify-center text-lg border border-white/5">🇦🇷</div>
+                  <div class="aspect-square rounded-full bg-teal-900/30 flex items-center justify-center text-lg border border-white/5">🇦🇷</div>
+                  <div class="aspect-square rounded-full bg-teal-900/30 flex items-center justify-center text-lg border border-white/5">🇦🇷</div>
+                  <div class="aspect-square rounded-full bg-teal-900/30 flex items-center justify-center text-lg border border-white/5">🇦🇷</div>
+                  <div class="aspect-square rounded-full bg-teal-900/30 flex items-center justify-center text-lg border border-white/5">🇦🇷</div>
+                  
+                  <!-- Clone Row 1 for smooth loop -->
+                  <div class="aspect-square rounded-full bg-blue-900/30 flex items-center justify-center text-lg border border-white/5">
+                    <img src="https://www.countryflags.com/wp-content/uploads/italy-flag-png-large-300x200.png" class="w-full h-full rounded-full border border-slate-700 object-cover" alt="IT" />
+                  </div>
+                  <div class="aspect-square rounded-full bg-red-900/30 flex items-center justify-center text-lg border border-white/5">🇺🇸</div>
+                  <div class="aspect-square rounded-full bg-green-900/30 flex items-center justify-center text-lg border border-white/5">🇮🇹</div>
+                  <div class="aspect-square rounded-full bg-yellow-900/30 flex items-center justify-center text-lg border border-white/5">🇧🇷</div>
+                  <div class="aspect-square rounded-full bg-indigo-900/30 flex items-center justify-center text-lg border border-white/5">🇦🇲</div>
+                  <div class="aspect-square rounded-full bg-slate-800 flex items-center justify-center text-lg border border-white/5">🇨🇦</div>
+                  
+                  <!-- Clone Row 2 for smooth loop -->
+                  <div class="aspect-square rounded-full bg-orange-900/30 flex items-center justify-center text-lg border border-white/5">🇪🇸</div>
+                  <div class="aspect-square rounded-full bg-teal-900/30 flex items-center justify-center text-lg border border-white/5">🇦🇷</div>
+                  <div class="aspect-square rounded-full bg-teal-900/30 flex items-center justify-center text-lg border border-white/5">🇦🇷</div>
+                  <div class="aspect-square rounded-full bg-teal-900/30 flex items-center justify-center text-lg border border-white/5">🇦🇷</div>
+                  <div class="aspect-square rounded-full bg-teal-900/30 flex items-center justify-center text-lg border border-white/5">🇦🇷</div>
+                  <div class="aspect-square rounded-full bg-teal-900/30 flex items-center justify-center text-lg border border-white/5">🇦🇷</div>
                 </div>
               </div>
             </div>
@@ -409,7 +428,7 @@
 
     <script>
       lucide.createIcons();
-
+         
       // 1. Fonctionnalité Spotlight au survol
       const cards = document.querySelectorAll(".spotlight-card");
 
@@ -430,16 +449,8 @@
         const track = document.getElementById("flag-scroll-track");
 
         if (originalFlags && track) {
-          // Dupliquer le contenu des drapeaux au moins deux fois pour assurer l'effet infini
-          // On peut le faire plusieurs fois si la grille est petite par rapport à la zone visible
-          const clone1 = originalFlags.cloneNode(true);
-          const clone2 = originalFlags.cloneNode(true);
-
-          clone1.removeAttribute("id");
-          clone2.removeAttribute("id");
-
-          track.appendChild(clone1);
-          track.appendChild(clone2);
+          // Le clonage est déjà fait en HTML statique
+          // L'animation scrollFlags fait défiler à 50% ce qui crée l'effet infini
         }
       });
     </script>
