@@ -13,9 +13,11 @@
     />   
 
     <style>
-      
+      /* Dark mode only */
       body {
         font-family: "Inter", sans-serif;
+        background-color: #0a0810;
+        color: #ffffff;
       }
       .clip-image {
         clip-path: inset(0 round 1.5rem);
@@ -32,10 +34,10 @@
         border-radius: 2px;
       }
 
-      /* 1. Style pour l'effet Spotlight */
+      /* 1. Style pour l'effet Spotlight - Intensité réduite */
       .spotlight-card {
         position: relative;
-        isolation: isolate; /* Crée un nouveau contexte d'empilement */
+        isolation: isolate;
       }
       .spotlight-card::before {
         content: "";
@@ -52,7 +54,7 @@
         opacity: 0;
         transition: opacity 0.3s;
         pointer-events: none;
-        z-index: 0; /* Assurez-vous que le spotlight est en dessous du contenu */
+        z-index: 0;
         border-radius: 1rem;
       }
       .spotlight-card:hover::before {
@@ -61,6 +63,11 @@
       .spotlight-card > * {
         position: relative;
         z-index: 10;
+      }
+
+      /* Backdrop blur for card items */
+      .card-item-blur {
+        backdrop-filter: blur(4px);
       }
 
       /* 2. Styles pour le défilement infini des drapeaux */
@@ -116,11 +123,116 @@
       .flags-track-paused:hover .flags-track {
         animation-play-state: paused;
       }
+
+      /* Flag item hover effect */
+      .flag-item {
+        aspect-ratio: 1;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.125rem;
+        border: 1px solid;
+        transition: all 300ms ease;
+        cursor: pointer;
+      }
+
+      .flag-item:hover {
+        transform: scale(1.15);
+        box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.4);
+        z-index: 40;
+        filter: brightness(1.3);
+      }
+
+      .flag-item img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      /* Mode toggle button */
+      .mode-toggle {
+        position: fixed;
+        top: 1.5rem;
+        right: 1.5rem;
+        z-index: 50;
+        padding: 0.625rem;
+        border-radius: 0.5rem;
+        backdrop-filter: blur(12px);
+        border: 1px solid var(--border-color);
+        background-color: rgba(255, 255, 255, 0.05);
+        color: var(--text-primary);
+        transition: all 300ms ease;
+        cursor: pointer;
+      }
+
+      .mode-toggle:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        transform: scale(1.05);
+      }
+
+      html.light-mode .mode-toggle {
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+
+      html.light-mode .mode-toggle:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+      }
+
+      /* Light mode - Bento cards styling */
+      html.light-mode .spotlight-card {
+        background-color: #f0eff7 !important;
+        border-color: rgba(0, 0, 0, 0.12) !important;
+      }
+
+      html.light-mode .spotlight-card p,
+      html.light-mode .spotlight-card h3 {
+        color: #1a1a1a !important;
+      }
+
+      html.light-mode .spotlight-card .text-slate-500 {
+        color: #666666 !important;
+      }
+
+      html.light-mode .bg-\[#1C1F26\],
+      html.light-mode [class*="bg-\[#"] {
+        background-color: rgba(100, 80, 180, 0.08) !important;
+      }
+
+      html.light-mode .border-white\/5 {
+        border-color: rgba(0, 0, 0, 0.08) !important;
+      }
+
+      /* Responsive improvements */
+      @media (max-width: 768px) {
+        .mode-toggle {
+          top: 1rem;
+          right: 1rem;
+          padding: 0.5rem;
+        }
+
+        h3 {
+          font-size: 1rem;
+        }
+
+        p {
+          font-size: 0.875rem;
+        }
+      }
+
+      @media (max-width: 640px) {
+        h3 {
+          font-size: 0.9rem;
+        }
+
+        p {
+          font-size: 0.75rem;
+        }
+      }
     </style>
   </head>
-  <body
-    class="bg-slate-50 text-slate-600 antialiased selection:bg-blue-200 selection:text-blue-900"
-  >
+  <body>
     <section class="bg-[#0B0C10] py-24 text-slate-300">
       <div class="max-w-7xl mx-auto px-6">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
@@ -133,7 +245,7 @@
 
             <div class="relative z-10 flex flex-col gap-3">
               <div
-                class="flex items-center gap-4 bg-[#1C1F26] p-3 rounded-xl border border-white/5 shadow-lg"
+                class="flex items-center gap-4 bg-[#1C1F26] p-3 rounded-xl border border-white/5 shadow-lg card-item-blur"
               >
                 <div
                   class="w-10 h-10 rounded-lg bg-red-500/10 flex items-center justify-center shrink-0"
@@ -150,7 +262,7 @@
               </div>
 
               <div
-                class="flex items-center gap-4 bg-[#1C1F26] p-3 rounded-xl border border-white/5 shadow-lg opacity-80 scale-95 origin-top transition-all duration-300 group-hover:opacity-100 group-hover:scale-100 group-hover:shadow-2xl"
+                class="flex items-center gap-4 bg-[#1C1F26] p-3 rounded-xl border border-white/5 shadow-lg opacity-80 scale-95 origin-top transition-all duration-300 group-hover:opacity-100 group-hover:scale-100 group-hover:shadow-2xl card-item-blur"
               >
                 <div
                   class="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center shrink-0"
@@ -376,40 +488,40 @@
               <div class="flex-1 overflow-hidden flags-track-paused flags-container mt-12">
                 <div class="flags-track" id="flag-scroll-track">
                   <!-- Row 1 Flags -->
-                  <div class="aspect-square rounded-full bg-blue-900/30 flex items-center justify-center text-lg border border-white/5">
+                  <div class="aspect-square rounded-full bg-blue-900/30 flex items-center justify-center text-lg border border-white/5 flag-item">
                     <img src="https://www.countryflags.com/wp-content/uploads/italy-flag-png-large-300x200.png" class="w-full h-full rounded-full border border-slate-700 object-cover" alt="IT" />
                   </div>
-                  <div class="aspect-square rounded-full bg-red-900/30 flex items-center justify-center text-lg border border-white/5">🇺🇸</div>
-                  <div class="aspect-square rounded-full bg-green-900/30 flex items-center justify-center text-lg border border-white/5">🇮🇹</div>
-                  <div class="aspect-square rounded-full bg-yellow-900/30 flex items-center justify-center text-lg border border-white/5">🇧🇷</div>
-                  <div class="aspect-square rounded-full bg-indigo-900/30 flex items-center justify-center text-lg border border-white/5">🇦🇲</div>
-                  <div class="aspect-square rounded-full bg-slate-800 flex items-center justify-center text-lg border border-white/5">🇨🇦</div>
+                  <div class="aspect-square rounded-full bg-red-900/30 flex items-center justify-center text-lg border border-white/5 flag-item">🇺🇸</div>
+                  <div class="aspect-square rounded-full bg-green-900/30 flex items-center justify-center text-lg border border-white/5 flag-item">🇮🇹</div>
+                  <div class="aspect-square rounded-full bg-yellow-900/30 flex items-center justify-center text-lg border border-white/5 flag-item">🇧🇷</div>
+                  <div class="aspect-square rounded-full bg-indigo-900/30 flex items-center justify-center text-lg border border-white/5 flag-item">🇦🇲</div>
+                  <div class="aspect-square rounded-full bg-slate-800 flex items-center justify-center text-lg border border-white/5 flag-item">🇨🇦</div>
                   
                   <!-- Row 2 Flags -->
-                  <div class="aspect-square rounded-full bg-orange-900/30 flex items-center justify-center text-lg border border-white/5">🇪🇸</div>
-                  <div class="aspect-square rounded-full bg-teal-900/30 flex items-center justify-center text-lg border border-white/5">🇦🇷</div>
-                  <div class="aspect-square rounded-full bg-teal-900/30 flex items-center justify-center text-lg border border-white/5">🇦🇷</div>
-                  <div class="aspect-square rounded-full bg-teal-900/30 flex items-center justify-center text-lg border border-white/5">🇦🇷</div>
-                  <div class="aspect-square rounded-full bg-teal-900/30 flex items-center justify-center text-lg border border-white/5">🇦🇷</div>
-                  <div class="aspect-square rounded-full bg-teal-900/30 flex items-center justify-center text-lg border border-white/5">🇦🇷</div>
+                  <div class="aspect-square rounded-full bg-orange-900/30 flex items-center justify-center text-lg border border-white/5 flag-item">🇪🇸</div>
+                  <div class="aspect-square rounded-full bg-teal-900/30 flex items-center justify-center text-lg border border-white/5 flag-item">🇦🇷</div>
+                  <div class="aspect-square rounded-full bg-teal-900/30 flex items-center justify-center text-lg border border-white/5 flag-item">🇦🇷</div>
+                  <div class="aspect-square rounded-full bg-teal-900/30 flex items-center justify-center text-lg border border-white/5 flag-item">🇦🇷</div>
+                  <div class="aspect-square rounded-full bg-teal-900/30 flex items-center justify-center text-lg border border-white/5 flag-item">🇦🇷</div>
+                  <div class="aspect-square rounded-full bg-teal-900/30 flex items-center justify-center text-lg border border-white/5 flag-item">🇦🇷</div>
                   
                   <!-- Clone Row 1 for smooth loop -->
-                  <div class="aspect-square rounded-full bg-blue-900/30 flex items-center justify-center text-lg border border-white/5">
+                  <div class="aspect-square rounded-full bg-blue-900/30 flex items-center justify-center text-lg border border-white/5 flag-item">
                     <img src="https://www.countryflags.com/wp-content/uploads/italy-flag-png-large-300x200.png" class="w-full h-full rounded-full border border-slate-700 object-cover" alt="IT" />
                   </div>
-                  <div class="aspect-square rounded-full bg-red-900/30 flex items-center justify-center text-lg border border-white/5">🇺🇸</div>
-                  <div class="aspect-square rounded-full bg-green-900/30 flex items-center justify-center text-lg border border-white/5">🇮🇹</div>
-                  <div class="aspect-square rounded-full bg-yellow-900/30 flex items-center justify-center text-lg border border-white/5">🇧🇷</div>
-                  <div class="aspect-square rounded-full bg-indigo-900/30 flex items-center justify-center text-lg border border-white/5">🇦🇲</div>
-                  <div class="aspect-square rounded-full bg-slate-800 flex items-center justify-center text-lg border border-white/5">🇨🇦</div>
+                  <div class="aspect-square rounded-full bg-red-900/30 flex items-center justify-center text-lg border border-white/5 flag-item">🇺🇸</div>
+                  <div class="aspect-square rounded-full bg-green-900/30 flex items-center justify-center text-lg border border-white/5 flag-item">🇮🇹</div>
+                  <div class="aspect-square rounded-full bg-yellow-900/30 flex items-center justify-center text-lg border border-white/5 flag-item">🇧🇷</div>
+                  <div class="aspect-square rounded-full bg-indigo-900/30 flex items-center justify-center text-lg border border-white/5 flag-item">🇦🇲</div>
+                  <div class="aspect-square rounded-full bg-slate-800 flex items-center justify-center text-lg border border-white/5 flag-item">🇨🇦</div>
                   
                   <!-- Clone Row 2 for smooth loop -->
-                  <div class="aspect-square rounded-full bg-orange-900/30 flex items-center justify-center text-lg border border-white/5">🇪🇸</div>
-                  <div class="aspect-square rounded-full bg-teal-900/30 flex items-center justify-center text-lg border border-white/5">🇦🇷</div>
-                  <div class="aspect-square rounded-full bg-teal-900/30 flex items-center justify-center text-lg border border-white/5">🇦🇷</div>
-                  <div class="aspect-square rounded-full bg-teal-900/30 flex items-center justify-center text-lg border border-white/5">🇦🇷</div>
-                  <div class="aspect-square rounded-full bg-teal-900/30 flex items-center justify-center text-lg border border-white/5">🇦🇷</div>
-                  <div class="aspect-square rounded-full bg-teal-900/30 flex items-center justify-center text-lg border border-white/5">🇦🇷</div>
+                  <div class="aspect-square rounded-full bg-orange-900/30 flex items-center justify-center text-lg border border-white/5 flag-item">🇪🇸</div>
+                  <div class="aspect-square rounded-full bg-teal-900/30 flex items-center justify-center text-lg border border-white/5 flag-item">🇦🇷</div>
+                  <div class="aspect-square rounded-full bg-teal-900/30 flex items-center justify-center text-lg border border-white/5 flag-item">🇦🇷</div>
+                  <div class="aspect-square rounded-full bg-teal-900/30 flex items-center justify-center text-lg border border-white/5 flag-item">🇦🇷</div>
+                  <div class="aspect-square rounded-full bg-teal-900/30 flex items-center justify-center text-lg border border-white/5 flag-item">🇦🇷</div>
+                  <div class="aspect-square rounded-full bg-teal-900/30 flex items-center justify-center text-lg border border-white/5 flag-item">🇦🇷</div>
                 </div>
               </div>
             </div>
