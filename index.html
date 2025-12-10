@@ -1,0 +1,447 @@
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>bento for 21st.dev</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+      }
+      .clip-image {
+        clip-path: inset(0 round 1.5rem);
+      }
+      /* Custom scrollbar to match dark theme in bento */
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 4px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #334155;
+        border-radius: 2px;
+      }
+
+      /* 1. Style pour l'effet Spotlight */
+      .spotlight-card {
+        position: relative;
+        isolation: isolate; /* Crée un nouveau contexte d'empilement */
+      }
+      .spotlight-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(
+          600px circle at var(--x) var(--y),
+          #1e293b50 0%,
+          transparent 80%
+        );
+        opacity: 0;
+        transition: opacity 0.3s;
+        pointer-events: none;
+        z-index: 0; /* Assurez-vous que le spotlight est en dessous du contenu */
+        border-radius: 1rem;
+      }
+      .spotlight-card:hover::before {
+        opacity: 1;
+      }
+      .spotlight-card > * {
+        position: relative;
+        z-index: 10;
+      }
+
+      /* 2. Styles pour le défilement infini des drapeaux */
+      @keyframes scroll {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(
+            calc(-100% - 8px)
+          ); /* Défile 1 set + gap de 8px */
+        }
+      }
+      .flags-track {
+        display: flex;
+        gap: 8px; /* gap-2 */
+        animation: scroll 30s linear infinite;
+        width: max-content;
+      }
+      .flags-track-paused:hover .flags-track {
+        animation-play-state: paused;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-slate-50 text-slate-600 antialiased selection:bg-blue-200 selection:text-blue-900"
+  >
+    <section class="bg-[#0B0C10] py-24 text-slate-300">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+          <div
+            class="bg-[#15171E] border border-white/5 rounded-2xl p-6 flex flex-col justify-between h-[340px] relative overflow-hidden group hover:border-white/10 transition-colors spotlight-card"
+          >
+            <div
+              class="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+            ></div>
+
+            <div class="relative z-10 flex flex-col gap-3">
+              <div
+                class="flex items-center gap-4 bg-[#1C1F26] p-3 rounded-xl border border-white/5 shadow-lg"
+              >
+                <div
+                  class="w-10 h-10 rounded-lg bg-red-500/10 flex items-center justify-center shrink-0"
+                >
+                  <i data-lucide="zap" class="w-5 h-5 text-red-500"></i>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <p class="text-sm font-medium text-white truncate">
+                    Court 4 - Booking
+                  </p>
+                  <p class="text-xs text-slate-500">Payment on 1 Feb 2024</p>
+                </div>
+                <p class="text-sm font-medium text-white">-$55.00</p>
+              </div>
+
+              <div
+                class="flex items-center gap-4 bg-[#1C1F26] p-3 rounded-xl border border-white/5 shadow-lg opacity-80 scale-95 origin-top transition-all duration-300 group-hover:opacity-100 group-hover:scale-100 group-hover:shadow-2xl"
+              >
+                <div
+                  class="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center shrink-0"
+                >
+                  <i data-lucide="calendar" class="w-5 h-5 text-white"></i>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <p class="text-sm font-medium text-white truncate">
+                    Pro Lesson Bundle
+                  </p>
+                  <p class="text-xs text-slate-500">Payment on 3 Feb 2024</p>
+                </div>
+                <p class="text-sm font-medium text-white">-$60.00</p>
+              </div>
+            </div>
+
+            <div class="relative z-10 mt-6">
+              <h3 class="text-lg font-semibold text-white tracking-tight mb-2">
+                Seamless Automatic Booking
+              </h3>
+              <p class="text-sm text-slate-400 leading-relaxed">
+                Streamline your court reservations and reduce manual effort.
+                Spend less time booking, more time playing.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="bg-[#15171E] border border-white/5 rounded-2xl p-6 flex flex-col justify-between h-[340px] relative overflow-hidden group hover:border-white/10 transition-colors spotlight-card"
+          >
+            <div
+              class="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-indigo-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+            ></div>
+
+            <div class="relative z-10 flex items-center justify-center py-2">
+              <div
+                class="bg-[#1C1F26] border border-white/5 rounded-xl p-5 w-full max-w-[200px] shadow-2xl"
+              >
+                <div class="text-xs text-slate-400 mb-1">Pro Plan</div>
+                <div class="flex items-baseline gap-1 mb-4">
+                  <span class="text-2xl font-semibold text-white">$199</span>
+                  <span class="text-xs text-slate-500">/Month</span>
+                </div>
+                <button
+                  class="w-full bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-medium py-2 rounded-lg transition-colors mb-4"
+                >
+                  Subscribe
+                </button>
+                <div class="space-y-2">
+                  <div class="h-1.5 w-full bg-slate-800 rounded-full"></div>
+                  <div class="h-1.5 w-2/3 bg-slate-800 rounded-full"></div>
+                  <div class="h-1.5 w-3/4 bg-slate-800 rounded-full"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="relative z-10 mt-4">
+              <h3 class="text-lg font-semibold text-white tracking-tight mb-2">
+                Custom Membership Models
+              </h3>
+              <p class="text-sm text-slate-400 leading-relaxed">
+                Support recurring billing models, minimize churn, and automate
+                your club access.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="bg-[#15171E] border border-white/5 rounded-2xl p-6 flex flex-col justify-between h-[340px] relative overflow-hidden group hover:border-white/10 transition-colors spotlight-card"
+          >
+            <div
+              class="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+            ></div>
+
+            <div
+              class="relative z-10 bg-[#1C1F26] border border-white/5 rounded-xl p-4 shadow-lg mb-4"
+            >
+              <div
+                class="flex justify-between items-center mb-4 border-b border-white/5 pb-2"
+              >
+                <span class="text-xs font-medium text-white"
+                  >January Summary</span
+                >
+                <span
+                  class="text-[10px] text-slate-500 bg-slate-800 px-1.5 py-0.5 rounded"
+                  >Jan 2024</span
+                >
+              </div>
+              <div class="space-y-3">
+                <div class="flex justify-between items-center text-xs">
+                  <span class="text-slate-400">Matches Played</span>
+                  <span class="text-white font-medium">124</span>
+                </div>
+                <div class="flex justify-between items-center text-xs">
+                  <span class="text-slate-400">Sets Won</span>
+                  <span class="text-white font-medium">89</span>
+                </div>
+                <div class="flex justify-between items-center text-xs">
+                  <span class="text-slate-400">Aces Served</span>
+                  <span class="text-white font-medium">456</span>
+                </div>
+                <div class="flex justify-between items-center text-xs">
+                  <span class="text-slate-400">Faults</span>
+                  <span class="text-white font-medium">12</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="relative z-10">
+              <h3 class="text-lg font-semibold text-white tracking-tight mb-2">
+                Track Stats Quickly
+              </h3>
+              <p class="text-sm text-slate-400 leading-relaxed">
+                Easily update your records and gather performance insights with
+                data consolidation.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div
+            class="bg-[#15171E] border border-white/5 rounded-2xl p-6 relative overflow-hidden group hover:border-white/10 transition-colors min-h-[300px] flex flex-col justify-between spotlight-card"
+          >
+            <div
+              class="relative z-10 flex items-center gap-3 mb-6 bg-[#1C1F26]/80 backdrop-blur-sm border border-white/5 p-3 rounded-xl w-fit"
+            >
+              <div
+                class="w-8 h-8 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-500"
+              >
+                <i data-lucide="check-circle" class="w-4 h-4"></i>
+              </div>
+              <div>
+                <p class="text-xs font-medium text-white">Schedule Updated</p>
+                <p class="text-[10px] text-slate-500">
+                  Tournament brackets live
+                </p>
+              </div>
+            </div>
+
+            <div class="relative z-10 space-y-3 mb-6">
+              <div
+                class="flex items-center justify-between text-xs border-b border-white/5 pb-3"
+              >
+                <div class="flex items-center gap-2">
+                  <img
+                    src="https://i.pravatar.cc/150?u=20"
+                    class="w-6 h-6 rounded-full border border-slate-700"
+                    alt=""
+                  />
+                  <span class="text-slate-300">Lucas Rodrighez</span>
+                </div>
+                <span class="text-slate-400 hidden sm:block">Court 1</span>
+                <span class="text-slate-400">12 Sept 10:00 AM</span>
+                <span
+                  class="px-2 py-1 rounded-full bg-yellow-500/10 text-yellow-400 font-medium"
+                  >In Play</span
+                >
+              </div>
+              <div
+                class="flex items-center justify-between text-xs border-b border-white/5 pb-3"
+              >
+                <div class="flex items-center gap-2">
+                  <img
+                    src="https://i.pravatar.cc/150?u=21"
+                    class="w-6 h-6 rounded-full border border-slate-700"
+                    alt=""
+                  />
+                  <span class="text-slate-300">Lily Alexa</span>
+                </div>
+                <span class="text-slate-400 hidden sm:block">Court 3</span>
+                <span class="text-slate-400">12 Sept 12:00 AM</span>
+                <span
+                  class="px-2 py-1 rounded-full bg-emerald-500/10 text-emerald-400 font-medium"
+                  >Won 6-4</span
+                >
+              </div>
+              <div class="flex items-center justify-between text-xs">
+                <div class="flex items-center gap-2">
+                  <img
+                    src="https://i.pravatar.cc/150?u=24"
+                    class="w-6 h-6 rounded-full border border-slate-700"
+                    alt=""
+                  />
+                  <span class="text-slate-300">Alex Brown</span>
+                </div>
+                <span class="text-slate-400 hidden sm:block">Court 2</span>
+                <span class="text-slate-400">12 Sept 02:00 PM</span>
+                <span
+                  class="px-2 py-1 rounded-full bg-emerald-500/10 text-emerald-400 font-medium"
+                  >Won 7-5</span
+                >
+              </div>
+            </div>
+
+            <div class="relative z-10">
+              <h3 class="text-lg font-semibold text-white tracking-tight mb-2">
+                Efficient Tournament System
+              </h3>
+              <p class="text-sm text-slate-400 leading-relaxed max-w-md">
+                Our feature-packed system ensures precision, compliance, and
+                stress-free match processing for simplified success.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="bg-[#15171E] border border-white/5 rounded-2xl p-6 relative overflow-hidden group hover:border-white/10 transition-colors min-h-[300px] flex flex-col justify-between spotlight-card"
+          >
+            <div class="relative z-10 mb-6 flex items-start gap-4">
+              <div
+                class="bg-[#1C1F26] border border-white/5 rounded-xl p-4 shadow-lg shrink-0"
+              >
+                <div
+                  class="w-8 h-8 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-500 mb-2"
+                >
+                  <i data-lucide="globe" class="w-4 h-4"></i>
+                </div>
+                <p class="text-[10px] text-slate-500">Club Ranking</p>
+                <p class="text-sm font-medium text-white"># 24 Global</p>
+              </div>
+
+              <div class="flex-1 overflow-hidden flags-track-paused">
+                <div class="flags-track" id="flag-scroll-track">
+                  <div
+                    class="grid grid-cols-4 gap-2 shrink-0"
+                    id="original-flags"
+                  >
+                    <div
+                      class="aspect-square rounded-full bg-blue-900/30 flex items-center justify-center text-lg border border-white/5"
+                    >
+                      <img
+                        src="https://www.countryflags.com/wp-content/uploads/italy-flag-png-large-300x200.png"
+                        class="w-24 h-24 rounded-full border border-slate-700 object-cover"
+                        alt=""
+                      />
+                    </div>
+                    <div
+                      class="aspect-square rounded-full bg-red-900/30 flex items-center justify-center text-lg border border-white/5"
+                    >
+                      🇺🇸
+                    </div>
+                    <div
+                      class="aspect-square rounded-full bg-green-900/30 flex items-center justify-center text-lg border border-white/5"
+                    >
+                      🇮🇹
+                    </div>
+                    <div
+                      class="aspect-square rounded-full bg-yellow-900/30 flex items-center justify-center text-lg border border-white/5"
+                    >
+                      🇧🇷
+                    </div>
+                    <div
+                      class="aspect-square rounded-full bg-indigo-900/30 flex items-center justify-center text-lg border border-white/5"
+                    >
+                      🇦🇲
+                    </div>
+                    <div
+                      class="aspect-square rounded-full bg-slate-800 flex items-center justify-center text-lg border border-white/5"
+                    >
+                      🇨🇦
+                    </div>
+                    <div
+                      class="aspect-square rounded-full bg-orange-900/30 flex items-center justify-center text-lg border border-white/5"
+                    >
+                      🇪🇸
+                    </div>
+                    <div
+                      class="aspect-square rounded-full bg-teal-900/30 flex items-center justify-center text-lg border border-white/5"
+                    >
+                      🇦🇷
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="relative z-10">
+              <h3 class="text-lg font-semibold text-white tracking-tight mb-2">
+                International Player Network
+              </h3>
+              <p class="text-sm text-slate-400 leading-relaxed max-w-md">
+                You can connect with players from +30 countries in one club,
+                making your international experience swift and hassle-free.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      lucide.createIcons();
+
+      // 1. Fonctionnalité Spotlight au survol
+      const cards = document.querySelectorAll(".spotlight-card");
+
+      cards.forEach((card) => {
+        card.addEventListener("mousemove", (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+
+          card.style.setProperty("--x", `${x}px`);
+          card.style.setProperty("--y", `${y}px`);
+        });
+      });
+
+      // 2. Fonctionnalité de Défilement Infini des Drapeaux
+      document.addEventListener("DOMContentLoaded", () => {
+        const originalFlags = document.getElementById("original-flags");
+        const track = document.getElementById("flag-scroll-track");
+
+        if (originalFlags && track) {
+          // Dupliquer le contenu des drapeaux au moins deux fois pour assurer l'effet infini
+          // On peut le faire plusieurs fois si la grille est petite par rapport à la zone visible
+          const clone1 = originalFlags.cloneNode(true);
+          const clone2 = originalFlags.cloneNode(true);
+
+          clone1.removeAttribute("id");
+          clone2.removeAttribute("id");
+
+          track.appendChild(clone1);
+          track.appendChild(clone2);
+        }
+      });
+    </script>
+  </body>
+</html>
