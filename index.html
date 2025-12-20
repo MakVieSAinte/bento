@@ -405,7 +405,7 @@
             
             <div class="relative z-10 space-y-3 mb-6">
               <div
-                class="flex items-center justify-between text-xs border-b border-white/5 pb-3"
+                class="flex items-center justify-between text-xs text-left border-b border-white/5 pb-3"
               >
                 <div class="flex items-center gap-2">
                   <img
@@ -433,7 +433,7 @@
                   />
                   <span class="text-slate-300">Riche Makso</span>
                 </div>
-                <span class="text-slate-400 hidden sm:block">Court 3</span>
+                <span class="text-slate-400 hidden sm:block">Court 3</span> 
                 <span class="text-slate-400">12 Sept 12:00 AM</span>
                 <span
                   class="px-2 py-1 rounded-full bg-emerald-500/10 text-emerald-400 font-medium"
@@ -473,15 +473,17 @@
   
   <div class="relative z-10 mb-6 flex flex-col gap-4 h-full">
     
-    <div class="absolute top-6 left-6 bg-[#1C1F26]/60 backdrop-blur-md border border-white/5 rounded-xl p-4 shadow-lg z-30">
+    <div class="absolute w-max top-8 left-6 flex gap-3 bg-[#1C1F26]/60 backdrop-blur-md border border-white/5 rounded-xl p-4 shadow-lg z-30">
       <div class="w-8 h-8 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-500 mb-2">
         <i data-lucide="globe" class="w-4 h-4"></i>
       </div>
-      <p class="text-[10px] text-slate-500">Club Ranking</p>
-      <p class="text-sm font-medium text-white"># 24 Global</p>
+      <div class="flex flex-col">
+        <p class="text-[10px] text-slate-500">Club Ranking</p>
+        <p class="text-sm font-medium text-white"># 24 Global</p>
+      </div>
     </div>
 
-    <div class="flex-1 overflow-hidden flags-container mt-4 flex flex-col gap-3 opacity-50 grayscale-[30%] group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500">
+    <div class="flex-1 overflow-hidden flags-container mt-3 h-max flex flex-col gap-3 opacity-50 grayscale-[30%] group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500">
       
       <div class="flags-track flex gap-3 animate-scroll" style="width: max-content;">
         <div class="w-20 h-20 rounded-full bg-blue-900/30 flex items-center justify-center border border-white/5 overflow-hidden shrink-0">
@@ -490,20 +492,20 @@
         <div class="w-20 h-20 rounded-full bg-red-900/30 flex items-center justify-center border border-white/5 overflow-hidden shrink-0">
           <img src="https://cdn.countryflags.com/thumbs/united-states-of-america/flag-square-250.png" class="w-full h-full object-cover" alt="US" />
         </div>
+        <div class="w-20 h-20 rounded-full bg-slate-800 flex items-center justify-center border border-white/5 overflow-hidden shrink-0 text-lg">
+         <img src="https://cdn.countryflags.com/thumbs/congo-republic-of-the/flag-400.png" class="w-full h-full object-cover" alt="CA" />
+       </div>
         <div class="w-20 h-20 rounded-full bg-green-900/30 flex items-center justify-center border border-white/5 overflow-hidden shrink-0">
           <img src="https://www.countryflags.com/wp-content/uploads/palestina-flag-jpg-xl-768x384.jpg" class="w-full h-full object-cover" alt="PS" />
         </div>
         <div class="w-20 h-20 rounded-full bg-slate-800 flex items-center justify-center border border-white/5 overflow-hidden shrink-0">
-          <img src="https://www.countryflags.com/wp-content/uploads/canada-flag-png-large-300x200.png" class="w-full h-full object-cover" alt="CA" />
-        </div>
-         <div class="w-20 h-20 rounded-full bg-slate-800 flex items-center justify-center border border-white/5 overflow-hidden shrink-0 text-lg">
-          🇦🇷
+          <img src="https://www.countryflags.com/wp-content/uploads/togo-flag-png-large.png" class="w-full h-full object-cover" alt="CA" />
         </div>
       </div>
 
       <div class="flags-track flex gap-3 pl-6 animate-scroll-reverse" style="width: max-content;">
         <div class="w-20 h-20 rounded-full bg-yellow-900/30 flex items-center justify-center border border-white/5 overflow-hidden shrink-0">
-           <img src="https://cdn.countryflags.com/thumbs/brazil/flag-square-250.png" class="w-full h-full object-cover" alt="BR" />
+           <img src="https://www.countryflags.com/wp-content/uploads/france-flag-png-large.png" class="w-full h-full object-cover" alt="BR" />
         </div>
         <div class="w-20 h-20 rounded-full bg-indigo-900/30 flex items-center justify-center border border-white/5 overflow-hidden shrink-0">
           <img src="https://cdn.countryflags.com/thumbs/japan/flag-square-250.png" class="w-full h-full object-cover" alt="JP" />
@@ -512,10 +514,10 @@
            <img src="https://cdn.countryflags.com/thumbs/germany/flag-square-250.png" class="w-full h-full object-cover" alt="DE" />
         </div>
         <div class="w-20 h-20 rounded-full bg-slate-800 flex items-center justify-center border border-white/5 overflow-hidden shrink-0 text-lg">
-          🇫🇷
+          <img src="https://www.countryflags.com/wp-content/uploads/libya-flag-png-large.png" class="w-full h-full object-cover" alt="CA" />
         </div>
         <div class="w-20 h-20 rounded-full bg-slate-800 flex items-center justify-center border border-white/5 overflow-hidden shrink-0 text-lg">
-          🇪🇸
+          <img src="https://www.countryflags.com/wp-content/uploads/madagascar-flag-png-large.png" class="w-full h-full object-cover" alt="CA" />
         </div>
       </div>
 
