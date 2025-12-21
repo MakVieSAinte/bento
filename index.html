@@ -10,15 +10,15 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;display=swap"
       rel="stylesheet"
-    />    
- 
+    />
+
     <style>
       /* Dark mode only */
       body {
         font-family: "Inter", sans-serif;
         background-color: #0a0810;
         color: #ffffff;
-      }   
+      }
       .clip-image {
         clip-path: inset(0 round 1.5rem);
       }
@@ -79,13 +79,13 @@
           transform: translateX(calc(-50%));
         }
       }
-      
+
       .flags-container {
         position: relative;
         overflow: hidden;
         flex: 1;
       }
-      
+
       .flags-container::before {
         content: "";
         position: absolute;
@@ -93,11 +93,11 @@
         top: 0;
         bottom: 0;
         width: 60px;
-        background: linear-gradient(to right, #15171E, transparent);
+        background: linear-gradient(to right, #15171e, transparent);
         z-index: 20;
         pointer-events: none;
       }
-      
+
       .flags-container::after {
         content: "";
         position: absolute;
@@ -105,11 +105,11 @@
         top: 0;
         bottom: 0;
         width: 60px;
-        background: linear-gradient(to left, #15171E, transparent);
+        background: linear-gradient(to left, #15171e, transparent);
         z-index: 20;
         pointer-events: none;
       }
-      
+
       .flags-track {
         display: grid;
         grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -119,7 +119,7 @@
         grid-auto-rows: 1fr;
         height: fit-content;
       }
-      
+
       .flags-track-paused:hover .flags-track {
         animation-play-state: paused;
       }
@@ -254,9 +254,9 @@
                 </div>
                 <div class="flex-1 min-w-0">
                   <p class="text-sm font-medium text-white truncate">
-                    Court 4 - Booking
+                    Adobe Creative
                   </p>
-                  <p class="text-xs text-slate-500">Payment on 1 Feb 2024</p>
+                  <p class="text-xs text-slate-500">Paiement 1 fév 2025</p>
                 </div>
                 <p class="text-sm font-medium text-white">-$55.00</p>
               </div>
@@ -271,9 +271,9 @@
                 </div>
                 <div class="flex-1 min-w-0">
                   <p class="text-sm font-medium text-white truncate">
-                    Pro Lesson Bundle
+                    Frammer – Offre Pro
                   </p>
-                  <p class="text-xs text-slate-500">Payment on 3 Feb 2024</p>
+                  <p class="text-xs text-slate-500">Paiement 1 fév 2025</p>
                 </div>
                 <p class="text-sm font-medium text-white">-$60.00</p>
               </div>
@@ -281,11 +281,10 @@
 
             <div class="relative z-10 mt-6">
               <h3 class="text-lg font-semibold text-white tracking-tight mb-2">
-                Seamless Automatic Booking
+                Paiements automatiques fluides
               </h3>
               <p class="text-sm text-slate-400 leading-relaxed">
-                Streamline your court reservations and reduce manual effort.
-                Spend less time booking, more time playing.
+                Optimisez vos processus financiers et réduisez les efforts manuels. Passez moins de temps sur la saisie de données.
               </p>
             </div>
           </div>
@@ -301,15 +300,15 @@
               <div
                 class="bg-[#1C1F26] border border-white/5 rounded-xl p-5 w-full max-w-[200px] shadow-2xl"
               >
-                <div class="text-xs text-slate-400 mb-1">Pro Plan</div>
+                <div class="text-xs text-slate-400 mb-1">Plan Pro</div>
                 <div class="flex items-baseline gap-1 mb-4">
                   <span class="text-2xl font-semibold text-white">$199</span>
-                  <span class="text-xs text-slate-500">/Month</span>
+                  <span class="text-xs text-slate-500">/Mois</span>
                 </div>
                 <button
                   class="w-full bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-medium py-2 rounded-lg transition-colors mb-4"
                 >
-                  Subscribe
+                  S'abonner
                 </button>
                 <div class="space-y-2">
                   <div class="h-1.5 w-full bg-slate-800 rounded-full"></div>
@@ -321,11 +320,10 @@
 
             <div class="relative z-10 mt-4">
               <h3 class="text-lg font-semibold text-white tracking-tight mb-2">
-                Custom Membership Models
+                Modèles de facturation personnalisés
               </h3>
               <p class="text-sm text-slate-400 leading-relaxed">
-                Support recurring billing models, minimize churn, and automate
-                your club access.
+                Prenez en charge les modèles commerciaux récurrents.
               </p>
             </div>
           </div>
@@ -344,28 +342,28 @@
                 class="flex justify-between items-center mb-4 border-b border-white/5 pb-2"
               >
                 <span class="text-xs font-medium text-white"
-                  >January Summary</span
+                  >Résumé de Janvier</span
                 >
                 <span
                   class="text-[10px] text-slate-500 bg-slate-800 px-1.5 py-0.5 rounded"
-                  >Jan 2024</span
+                  >Janv 2024</span
                 >
               </div>
               <div class="space-y-3">
                 <div class="flex justify-between items-center text-xs">
-                  <span class="text-slate-400">Matches Played</span>
+                  <span class="text-slate-400">Revenus reconnus</span>
                   <span class="text-white font-medium">124</span>
                 </div>
                 <div class="flex justify-between items-center text-xs">
-                  <span class="text-slate-400">Sets Won</span>
+                  <span class="text-slate-400">Les litiges</span>
                   <span class="text-white font-medium">89</span>
                 </div>
                 <div class="flex justify-between items-center text-xs">
-                  <span class="text-slate-400">Aces Served</span>
+                  <span class="text-slate-400">Les remboursements</span>
                   <span class="text-white font-medium">456</span>
                 </div>
                 <div class="flex justify-between items-center text-xs">
-                  <span class="text-slate-400">Faults</span>
+                  <span class="text-slate-400">Les créances irrécouvrables</span>
                   <span class="text-white font-medium">12</span>
                 </div>
               </div>
@@ -373,11 +371,10 @@
 
             <div class="relative z-10">
               <h3 class="text-lg font-semibold text-white tracking-tight mb-2">
-                Track Stats Quickly
+                Clôturez les comptes rapidement
               </h3>
               <p class="text-sm text-slate-400 leading-relaxed">
-                Easily update your records and gather performance insights with
-                data consolidation.
+                Informez facilement vos investisseurs et recueillez des informations sur vos clients.
               </p>
             </div>
           </div>
@@ -396,30 +393,32 @@
                 <i data-lucide="check-circle" class="w-4 h-4"></i>
               </div>
               <div>
-                <p class="text-xs font-medium text-white">Schedule Updated</p>
+                <p class="text-xs font-medium text-white">Succès de la paie</p>
                 <p class="text-[10px] text-slate-500">
-                  Tournament brackets live
+                  L'employé a reçu son salaire.
                 </p>
               </div>
             </div>
-            
+
             <div class="relative z-10 space-y-3 mb-6">
               <div
                 class="flex items-center justify-between text-xs text-left border-b border-white/5 pb-3"
               >
                 <div class="flex items-center gap-2">
                   <img
-                    src="https://i.pravatar.cc/150?u=20"
+                    src="mak.png"
                     class="w-6 h-6 rounded-full border border-slate-700"
                     alt=""
                   />
                   <span class="text-slate-300">Mak VieSAinte</span>
                 </div>
-                <span class="text-slate-400 text-left hidden sm:block">Court 1</span>
-                <span class="text-slate-400">12 Sept 10:00 AM</span>
+                <span class="text-slate-400 text-left hidden sm:block"
+                  >Court 1</span
+                >
+                <span class="text-slate-400">12 sept 2025 00h00</span>
                 <span
                   class="px-2 py-1 rounded-full bg-yellow-500/10 text-yellow-400 font-medium"
-                  >In Play</span
+                  >En cours</span
                 >
               </div>
               <div
@@ -427,122 +426,191 @@
               >
                 <div class="flex items-center gap-2">
                   <img
-                    src="https://i.pravatar.cc/150?u=21"
+                    src="riche.png"
                     class="w-6 h-6 rounded-full border border-slate-700"
                     alt=""
                   />
                   <span class="text-slate-300">Riche Makso</span>
                 </div>
-                <span class="text-slate-400 hidden sm:block">Court 3</span> 
-                <span class="text-slate-400">12 Sept 12:00 AM</span>
+                <span class="text-slate-400 hidden sm:block">Court 3</span>
+                <span class="text-slate-400">12 sept 2025 00h00</span>
                 <span
                   class="px-2 py-1 rounded-full bg-emerald-500/10 text-emerald-400 font-medium"
-                  >Won 6-4</span
+                  >Terminé</span
                 >
               </div>
               <div class="flex items-center justify-between text-xs">
                 <div class="flex items-center gap-2">
                   <img
-                    src="https://i.pravatar.cc/150?u=24"
+                    src="espoir.png"
                     class="w-6 h-6 rounded-full border border-slate-700"
                     alt=""
                   />
                   <span class="text-slate-300">Espoir Dev</span>
                 </div>
                 <span class="text-slate-400 hidden sm:block">Court 2</span>
-                <span class="text-slate-400">12 Sept 02:00 PM</span>
+                <span class="text-slate-400">12 sept 2025 00h00</span>
                 <span
                   class="px-2 py-1 rounded-full bg-emerald-500/10 text-emerald-400 font-medium"
-                  >Won 7-5</span
+                  >Terminé</span
                 >
               </div>
             </div>
 
             <div class="relative z-10">
               <h3 class="text-lg font-semibold text-white tracking-tight mb-2">
-                Efficient Tournament System
+                Efficace avec un système de paie parfait
               </h3>
               <p class="text-sm text-slate-400 leading-relaxed max-w-md">
-                Our feature-packed system ensures precision, compliance, and
-                stress-free match processing for simplified success.
+                Notre système riche en fonctionnalités garantit précision, conformité et un traitement de la paie sans stress.
               </p>
             </div>
-          </div>  
+          </div>
 
-          <div class="bg-[#15171E] border border-white/5 rounded-2xl p-6 relative overflow-hidden group hover:border-white/10 transition-colors min-h-[300px] flex flex-col justify-between spotlight-card">
-  
-  <div class="relative z-10 mb-6 flex flex-col gap-4 h-full">
-    
-    <div class="absolute w-max top-8 left-6 flex gap-3 bg-[#1C1F26]/60 backdrop-blur-md border border-white/5 rounded-xl p-4 shadow-lg z-30">
-      <div class="w-8 h-8 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-500 mb-2">
-        <i data-lucide="globe" class="w-4 h-4"></i>
-      </div>
-      <div class="flex flex-col">
-        <p class="text-[10px] text-slate-500">Club Ranking</p>
-        <p class="text-sm font-medium text-white"># 24 Global</p>
-      </div>
-    </div>
+          <div
+            class="bg-[#15171E] border border-white/5 rounded-2xl p-6 relative overflow-hidden group hover:border-white/10 transition-colors min-h-[300px] flex flex-col justify-between spotlight-card"
+          >
+            <div class="relative z-10 mb-6 flex flex-col gap-4 h-full">
+              <div
+                class="absolute w-max top-8 left-6 flex gap-1 bg-[#1C1F26]/60 backdrop-blur-md border border-white/5 rounded-xl p-4 shadow-lg z-30"
+              >
+                <div
+                  class="w-8 h-8 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-500 mb-2"
+                >
+                  <i data-lucide="globe" class="w-4 h-4"></i>
+                </div>
+                <div class="flex flex-col">
+                  <p class="text-[10px] text-slate-300">Club Ranking</p>
+                  <p class="text-sm font-medium text-white"># 24 Global</p>
+                </div>
+              </div>
 
-    <div class="flex-1 overflow-hidden flags-container mt-3 h-max flex flex-col gap-3 opacity-50 grayscale-[30%] group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500">
-      
-      <div class="flags-track flex gap-3 animate-scroll" style="width: max-content;">
-        <div class="w-20 h-20 rounded-full bg-blue-900/30 flex items-center justify-center border border-white/5 overflow-hidden shrink-0">
-          <img src="https://cdn.countryflags.com/thumbs/europe/flag-square-250.png" class="w-full h-full object-cover" alt="EU" />
-        </div>
-        <div class="w-20 h-20 rounded-full bg-red-900/30 flex items-center justify-center border border-white/5 overflow-hidden shrink-0">
-          <img src="https://cdn.countryflags.com/thumbs/united-states-of-america/flag-square-250.png" class="w-full h-full object-cover" alt="US" />
-        </div>
-        <div class="w-20 h-20 rounded-full bg-slate-800 flex items-center justify-center border border-white/5 overflow-hidden shrink-0 text-lg">
-         <img src="https://cdn.countryflags.com/thumbs/congo-republic-of-the/flag-400.png" class="w-full h-full object-cover" alt="CA" />
-       </div>
-        <div class="w-20 h-20 rounded-full bg-green-900/30 flex items-center justify-center border border-white/5 overflow-hidden shrink-0">
-          <img src="https://www.countryflags.com/wp-content/uploads/palestina-flag-jpg-xl-768x384.jpg" class="w-full h-full object-cover" alt="PS" />
-        </div>
-        <div class="w-20 h-20 rounded-full bg-slate-800 flex items-center justify-center border border-white/5 overflow-hidden shrink-0">
-          <img src="https://www.countryflags.com/wp-content/uploads/togo-flag-png-large.png" class="w-full h-full object-cover" alt="CA" />
-        </div>
-      </div>
+              <div
+                class="flex-1 overflow-hidden flags-container mt-3 h-max flex flex-col gap-3 opacity-50 grayscale-[30%] group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
+              >
+                <div
+                  class="flags-track flex gap-3 animate-scroll"
+                  style="width: max-content"
+                >
+                  <div
+                    class="w-20 h-20 rounded-full bg-blue-900/30 flex items-center justify-center border border-white/5 overflow-hidden shrink-0"
+                  >
+                    <img
+                      src="https://cdn.countryflags.com/thumbs/europe/flag-square-250.png"
+                      class="w-full h-full object-cover"
+                      alt="EU"
+                    />
+                  </div>
+                  <div
+                    class="w-20 h-20 rounded-full bg-red-900/30 flex items-center justify-center border border-white/5 overflow-hidden shrink-0"
+                  >
+                    <img
+                      src="https://cdn.countryflags.com/thumbs/united-states-of-america/flag-square-250.png"
+                      class="w-full h-full object-cover"
+                      alt="US"
+                    />
+                  </div>
+                  <div
+                    class="w-20 h-20 rounded-full bg-slate-800 flex items-center justify-center border border-white/5 overflow-hidden shrink-0 text-lg"
+                  >
+                    <img
+                      src="https://cdn.countryflags.com/thumbs/congo-republic-of-the/flag-400.png"
+                      class="w-full h-full object-cover"
+                      alt="CA"
+                    />
+                  </div>
+                  <div
+                    class="w-20 h-20 rounded-full bg-green-900/30 flex items-center justify-center border border-white/5 overflow-hidden shrink-0"
+                  >
+                    <img
+                      src="https://www.countryflags.com/wp-content/uploads/palestina-flag-jpg-xl-768x384.jpg"
+                      class="w-full h-full object-cover"
+                      alt="PS"
+                    />
+                  </div>
+                  <div
+                    class="w-20 h-20 rounded-full bg-slate-800 flex items-center justify-center border border-white/5 overflow-hidden shrink-0"
+                  >
+                    <img
+                      src="https://www.countryflags.com/wp-content/uploads/togo-flag-png-large.png"
+                      class="w-full h-full object-cover"
+                      alt="CA"
+                    />
+                  </div>
+                </div>
 
-      <div class="flags-track flex gap-3 pl-6 animate-scroll-reverse" style="width: max-content;">
-        <div class="w-20 h-20 rounded-full bg-yellow-900/30 flex items-center justify-center border border-white/5 overflow-hidden shrink-0">
-           <img src="https://www.countryflags.com/wp-content/uploads/france-flag-png-large.png" class="w-full h-full object-cover" alt="BR" />
-        </div>
-        <div class="w-20 h-20 rounded-full bg-indigo-900/30 flex items-center justify-center border border-white/5 overflow-hidden shrink-0">
-          <img src="https://cdn.countryflags.com/thumbs/japan/flag-square-250.png" class="w-full h-full object-cover" alt="JP" />
-        </div>
-        <div class="w-20 h-20 rounded-full bg-teal-900/30 flex items-center justify-center border border-white/5 overflow-hidden shrink-0">
-           <img src="https://cdn.countryflags.com/thumbs/germany/flag-square-250.png" class="w-full h-full object-cover" alt="DE" />
-        </div>
-        <div class="w-20 h-20 rounded-full bg-slate-800 flex items-center justify-center border border-white/5 overflow-hidden shrink-0 text-lg">
-          <img src="https://www.countryflags.com/wp-content/uploads/libya-flag-png-large.png" class="w-full h-full object-cover" alt="CA" />
-        </div>
-        <div class="w-20 h-20 rounded-full bg-slate-800 flex items-center justify-center border border-white/5 overflow-hidden shrink-0 text-lg">
-          <img src="https://www.countryflags.com/wp-content/uploads/madagascar-flag-png-large.png" class="w-full h-full object-cover" alt="CA" />
-        </div>
-      </div>
+                <div
+                  class="flags-track flex gap-3 pl-6 animate-scroll-reverse"
+                  style="width: max-content"
+                >
+                  <div
+                    class="w-20 h-20 rounded-full bg-yellow-900/30 flex items-center justify-center border border-white/5 overflow-hidden shrink-0"
+                  >
+                    <img
+                      src="https://www.countryflags.com/wp-content/uploads/france-flag-png-large.png"
+                      class="w-full h-full object-cover"
+                      alt="BR"
+                    />
+                  </div>
+                  <div
+                    class="w-20 h-20 rounded-full bg-indigo-900/30 flex items-center justify-center border border-white/5 overflow-hidden shrink-0"
+                  >
+                    <img
+                      src="https://cdn.countryflags.com/thumbs/japan/flag-square-250.png"
+                      class="w-full h-full object-cover"
+                      alt="JP"
+                    />
+                  </div>
+                  <div
+                    class="w-20 h-20 rounded-full bg-teal-900/30 flex items-center justify-center border border-white/5 overflow-hidden shrink-0"
+                  >
+                    <img
+                      src="https://cdn.countryflags.com/thumbs/germany/flag-square-250.png"
+                      class="w-full h-full object-cover"
+                      alt="DE"
+                    />
+                  </div>
+                  <div
+                    class="w-20 h-20 rounded-full bg-slate-800 flex items-center justify-center border border-white/5 overflow-hidden shrink-0 text-lg"
+                  >
+                    <img
+                      src="https://www.countryflags.com/wp-content/uploads/libya-flag-png-large.png"
+                      class="w-full h-full object-cover"
+                      alt="CA"
+                    />
+                  </div>
+                  <div
+                    class="w-20 h-20 rounded-full bg-slate-800 flex items-center justify-center border border-white/5 overflow-hidden shrink-0 text-lg"
+                  >
+                    <img
+                      src="https://www.countryflags.com/wp-content/uploads/madagascar-flag-png-large.png"
+                      class="w-full h-full object-cover"
+                      alt="CA"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
 
-    </div>
-  </div>
-
-  <div class="relative z-10 bg-gradient-to-t from-[#15171E] via-[#15171E] to-transparent pt-0">
-    <h3 class="text-lg font-semibold text-white tracking-tight mb-2">
-      International Player Network
-    </h3>
-    <p class="text-sm text-slate-400 leading-relaxed max-w-md">
-      You can connect with players from +30 countries in one club,
-      making your international experience swift and hassle-free.
-    </p>
-  </div>
-</div>
-
-          
+            <div
+              class="relative z-10 bg-gradient-to-t from-[#15171E] via-[#15171E] to-transparent pt-0"
+            >
+              <h3 class="text-lg font-semibold text-white tracking-tight mb-2">
+                International Player Network
+              </h3>
+              <p class="text-sm text-slate-400 leading-relaxed max-w-md">
+                You can connect with players from +30 countries in one club,
+                making your international experience swift and hassle-free.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
     <script>
       lucide.createIcons();
-         
+
       // 1. Fonctionnalité Spotlight au survol
       const cards = document.querySelectorAll(".spotlight-card");
 
